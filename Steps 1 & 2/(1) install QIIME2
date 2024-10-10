@@ -1,3 +1,19 @@
+##### basic shell functions #####
+
+# start by opening your command line interface (Windows = CMD, Mac = Terminal)
+# find out which shell program is running as default
+
+echo $0
+echo$SHELL
+
+# if you see "bash" or "/bin/bash" as the output, good. If not, try running this:
+
+chsh -s /bin/bash
+
+# then quit terminal/CMD and reopen, rerun echo. See bash? Good!
+
+##### conda & QIIME2 install #####
+
 # Here are the main instructions for installing QIIME2
 # https://docs.qiime2.org/2024.5/install/native/
 
