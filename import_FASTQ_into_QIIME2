@@ -1,0 +1,18 @@
+# import FASTQ files using a manifest file format
+# https://docs.qiime2.org/2024.5/tutorials/importing/#fastq-manifest-formats
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path bfrs-manifest \
+  --output-path paired-end-demux.qza \                      # this is the output file (72 FASTQ files conferted to 1 .qza file)
+  --input-format PairedEndFastqManifestPhred33V2
+
+# View sequence QC (demultiplexed sequences)
+
+qiime demux summarize \
+  --i-data paired-end-demux.qza \                          # the output (^ above) is now the imput file
+  --o-visualization demux.qzv                              # this is our first visualization
+
+# drag .qzv file into QIIME2 VIEW
+# https://view.qiime2.org/
+
