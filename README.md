@@ -6,7 +6,10 @@ Data analysis protocol for Takers's MS research at BFRS (DNA amplicon sequencing
 (1) 
 Install QIIME2.
 https://docs.qiime2.org/2024.5/install/native/
-I used version 2023.7 for initial analysis. 
+I used version 2023.7 for initial analysis.
+
+conda info
+conda activate qiime2-amplicon-2023.9
 
 (2)
 Import raw DNA sequences (which I will send in a zip file via email). 
