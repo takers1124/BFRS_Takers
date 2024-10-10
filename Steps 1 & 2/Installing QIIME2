@@ -1,0 +1,26 @@
+# Here are the main instructions for installing QIIME2
+# https://docs.qiime2.org/2024.5/install/native/
+
+# However, I could not get it to work with miniconda, so I used miniforge3
+# https://github.com/conda-forge/miniforge
+
+# I clicked the blue link to download miniforge3 to my computer
+# then, I used bash to install (replace the version of miniforge for your architecture - exactly as file name of download) 
+
+  bash Miniforge3-MacOSX-arm64.sh
+
+# after install, test
+
+  conda info
+
+# then use QIIME2 instal code ONLY for the amplicon distribution (for your architecture)
+
+  CONDA_SUBDIR=osx-64 conda env create -n qiime2-amplicon-2024.5 --file https://data.qiime2.org/distro/amplicon/qiime2-amplicon-2024.5-py39-osx-conda.yml
+
+# then activate
+  
+  conda activate qiime2-amplicon-2024.5
+
+
+
+
