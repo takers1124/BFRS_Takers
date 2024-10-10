@@ -4,7 +4,7 @@
 # find out which shell program is running as default
 
 echo $0
-echo$SHELL
+echo $SHELL
 
 # if you see "bash" or "/bin/bash" as the output, good. If not, try running this:
 
