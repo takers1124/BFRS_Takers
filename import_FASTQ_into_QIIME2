@@ -2,7 +2,7 @@
 
 conda info
 
-# then, activate QIIME2 environment
+# then, activate QIIME2 environment (replace with version you're using)
 
 conda activate qiime2-amplicon-2023.9
 
