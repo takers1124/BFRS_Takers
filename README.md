@@ -1,7 +1,7 @@
 # BFRS_Takers
 Data analysis protocol for Takers's MS research at BFRS (DNA amplicon sequencing of fungal ITS1 barcode)
 
-Process overview - part 1, with Python using QIIME2 environment
+Part 1 - bioinformatics with Python using QIIME2 environment
 
 (1) 
 Install QIIME2.
@@ -31,7 +31,7 @@ I had to connect to a remote server (AWS) to do this. I might just send you the 
 Assign functional groups. 
 References my taxonomic groups to FunGuild database. 
 
-Process overview - part 2, with R using several programs
+Part 2 - statistical analysis with R 
 
 (1) 
 Export feature table and taxonomy table (with functional groups) as CSV files and import into R.
