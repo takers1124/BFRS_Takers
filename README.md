@@ -5,7 +5,6 @@ Part 1 - bioinformatics with Python using QIIME2 environment
 
 (1) 
 Install QIIME2.
-https://docs.qiime2.org/2024.5/install/native/
 I used version 2023.7 for initial analysis.
 
 (2)
