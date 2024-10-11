@@ -1,25 +1,70 @@
-# when starting, always check conda
+#### getting strated ####
+
+(1) when starting, always check conda is functioning properly
 
 conda info
 
-# then, activate QIIME2 environment (replace with version you're using)
+(2) then, activate QIIME2 environment (replace with version you're using)
 
-conda activate qiime2-amplicon-2023.9
+conda activate qiime2-amplicon-2023.9         
+      # or qiime2-amplicon-2024.5
 
-# import FASTQ files using a manifest file format
-# https://docs.qiime2.org/2024.5/tutorials/importing/#fastq-manifest-formats
+(3) now, use the most regularly used commands to navigate in your working dorectory and make a new folder on your desktop
+
+pwd             # this will show your present working directory (pwd - aka, a folder)     
+                # Ex: /Users/taylorakers        or     C:\User\Glenn
+                # meaning, you are presently in the home user directory for your computer
+ls              # this will list (ls) all the items in the current directory
+                # you should see Documents, Downloads, Music, ETC, and most important for us, Desktop
+cd Desktop      # this will change directory (cd) that you're operating in
+                # in this case, now you're operating in your Desktop
+mkdir BFRS      # this will make a directory (mkdir) in your Desktop, and it must be given a name
+                # in this case, we'll call it BFRS
+                # this is where we will do all of our work
+cd BFRS         # move into it
+mkdir import    # new directory called import inside BFRS
+
+(4) now take a moment to minimize your command line prompt, zoom screen, etc to see your Desktop visually 
+      # do you see your new BFRS folder? And inside there's an import folder? 
+      # go ahead and download & drop the 2 files I've shared with you in there (we're doing this manually)
+                # raw_cut_BFRS            - these are the 72 FASTQ files
+                # bfrs-manifest.tsv       - this file guides the computer to the location of the FASTQ files
+
+
+#### import ####
+      # import FASTQ files using a manifest file format
+      # https://docs.qiime2.org/2024.5/tutorials/importing/#fastq-manifest-formats
+      # note, you must be in the directory with the above 2 files (ex: pwd = /Desktop/BFRS/import)
+
+(1) import
 
 qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
-  --input-path bfrs-manifest \
-  --output-path paired-end-demux.qza \                      # this is the output file (72 FASTQ files conferted to 1 .qza file)
+  --input-path bfrs-manifest.tsv \
+  --output-path paired-end-demux.qza \                      
   --input-format PairedEndFastqManifestPhred33V2
 
-# View sequence QC (demultiplexed sequences)
+      # bfrs-manifest = the .tsv you downloaded with the location of each FASTQ listed
+      # paired-end-demux.qza = the output file (72 FASTQ files conferted to 1 .qza file)
+          # you can see this visually in your import folder!
+
+(2) create sequence QC vizualisation (demultiplexed sequences)
 
 qiime demux summarize \
-  --i-data paired-end-demux.qza \                          # the output (^ above) is now the imput file
-  --o-visualization demux.qzv                              # this is our first visualization
+  --i-data paired-end-demux.qza \
+  --o-visualization demux.qzv                           
+    
+      # this is our first visualization
+          # you can see this file visually in your import folder!
 
-# drag .qzv file into QIIME2 VIEW
-# https://view.qiime2.org/
+(3) view it
+      # drag .qzv file from your import folder on your desktop into QIIME2 VIEW
+      # https://view.qiime2.org/
+      # for this visualization, you can see info on 2 tabs (top left)
+          # overview - number of reads 
+          # interactive quality plot - quality of reads
+
+(4) interpret quality
+      # using the interactive quality plot, you can determine where the sequences will be truncated in the nest step (using Dada2)
+      # these dequences all have good quality!
+          # all have a score above 25
