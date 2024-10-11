@@ -1,0 +1,22 @@
+#### using Dada2 ####
+
+(1) use Dada2 to perform sequence QC and construct the feature table
+      # as in this tutorial
+        # https://docs.qiime2.org/2023.9/tutorials/moving-pictures/#option-1-dada2
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs paired-end-demux.qza \
+  --p-trunc-len-f 220 \
+  --p-trunc-len-r 220 \
+  --o-representative-sequences asv-sequences.qza \
+  --o-table feature-table.qza \
+  --o-denoising-stats dada2-stats.qza
+
+      # I used 220 as the threshold based on the interactive quality plot for [demux.qzv] visualized with qiime2view
+          # 220 is the avg sequence length, and quality appears to be consistant throughout 
+
+      # feature-table.qza = FeatureTable[Frequency] -> count (frequency) of each unique squ in ea sample
+      # asv-sequences.qza = FeatureTable[Sequence] -> maps feature identifiers to the sequences they represent
+
+(2) visualize the QC stats (after removing "noisy" sequences
+
