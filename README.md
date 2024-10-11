@@ -15,8 +15,11 @@ Many ways to upload, we will use a manifest file (included in zip file).
 
 (3) 
 View sequence QC, denoise with Dada2, construct feature tables.
+
 FeatureTable[Frequency] = count of sequence reads (frequency) for each sample.
+
 FeatureTable[Sequence] = matches DNA sequence with each unique "feature". 
+
 Terms ("feature" = ASV = amplicon sequence variant = OTU = operational taxonomic unit).
 
 (4)
