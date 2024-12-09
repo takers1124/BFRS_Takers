@@ -24,9 +24,10 @@ qiime metadata tabulate \
   --m-input-file dada2-stats.qza \
   --o-visualization dada2-stats-summ.qzv
 
+      # upload all .qzv files to [https://view.qiime2.org/]
       # looks like 60-89% of sequences passed filter
 
-#### (4) Metadata & preliminary visualizations ####
+#### (4) Metadata & summary visualizations ####
 
 #1 add metadata to FeatureTable
       # import .tsv file with metadata, must be formatted in specific way defined by qiime2
@@ -49,15 +50,7 @@ qiime feature-table tabulate-seqs \
   --i-data asv-sequences.qza \
   --o-visualization asv-sequences-summ.qzv
 
-#4 export FeatureTable (.qza files) for optional use in R
 
-qiime tools export \
-  --input-path asv-sequences.qza \
-  --output-path exported-asv-sequ
-
-qiime tools export \
-  --input-path feature-table.qza \
-  --output-path exported-asv-frequ
 
 
 
