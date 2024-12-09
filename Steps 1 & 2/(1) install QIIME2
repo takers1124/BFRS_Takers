@@ -1,6 +1,6 @@
 ##### basic shell functions #####
 
-(1) start by opening your command line interface (Windows = CMD, Mac = Terminal)
+#(1) start by opening your command line interface (Windows = CMD, Mac = Terminal)
       # find out which shell program is running as default
 
 echo $0
@@ -13,7 +13,7 @@ chsh -s /bin/bash
       # then quit terminal/CMD and reopen, rerun echo. See bash? Good!
 
 ##### conda & QIIME2 install #####
-(1) install conda in some way
+#(1) install conda in some way
       # there are multiple options
           # Here are the main instructions for installing QIIME2
               # https://docs.qiime2.org/2024.5/install/native/
@@ -27,20 +27,20 @@ chsh -s /bin/bash
 
 bash Miniforge3-MacOSX-arm64.sh
 
-(2) after install, initiate with 
+#(2) after install, initiate with 
 
 conda init
 
-(3) test with
+#(3) test with
 
 conda info
 
-(4) then use QIIME2 instal code 
+#(4) then use QIIME2 instal code 
       # ONLY for the amplicon distribution (for your architecture)
 
 CONDA_SUBDIR=osx-64 conda env create -n qiime2-amplicon-2024.5 --file https://data.qiime2.org/distro/amplicon/qiime2-amplicon-2024.5-py39-osx-conda.yml
 
-(5) then activate
+#(5) then activate
   
 conda activate qiime2-amplicon-2024.5
 
