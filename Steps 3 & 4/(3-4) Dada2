@@ -1,0 +1,65 @@
+#### (3) Dada2 ####
+
+#1 use Dada2 to perform sequence QC and construct the feature table
+      # as in this tutorial
+        # https://docs.qiime2.org/2023.9/tutorials/moving-pictures/#option-1-dada2
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs paired-end-demux.qza \
+  --p-trunc-len-f 220 \
+  --p-trunc-len-r 220 \
+  --o-representative-sequences asv-sequences.qza \
+  --o-table feature-table.qza \
+  --o-denoising-stats dada2-stats.qza
+
+      # I used 220 as the threshold based on the interactive quality plot for [demux.qzv] visualized with qiime2view
+          # 220 is the avg sequence length, and quality appears to be consistant throughout 
+
+      # feature-table.qza = FeatureTable[Frequency] -> count (frequency) of each unique squ in ea sample
+      # asv-sequences.qza = FeatureTable[Sequence] -> maps feature identifiers to the sequences they represent
+
+#2 visualize the Dada2 QC stats (after removing "noisy" sequences)
+
+qiime metadata tabulate \
+  --m-input-file dada2-stats.qza \
+  --o-visualization dada2-stats-summ.qzv
+
+      # looks like 60-89% of sequences passed filter
+
+#### (4) Metadata & preliminary visualizations ####
+
+#1 add metadata to FeatureTable
+      # import .tsv file with metadata, must be formatted in specific way defined by qiime2
+
+qiime metadata tabulate \
+  --m-input-file sample-metadata.tsv \
+  --o-visualization metadata-summ-1.qzv
+
+#2 combine feature-table & metadata
+
+qiime feature-table summarize \
+  --i-table feature-table.qza \
+  --m-sample-metadata-file sample-metadata.tsv \
+  --o-visualization feature-table-summ.qzv
+
+#3 see ASV distributions among samples
+	# from here, can BLAST individual barcodes
+
+qiime feature-table tabulate-seqs \
+  --i-data asv-sequences.qza \
+  --o-visualization asv-sequences-summ.qzv
+
+#4 export FeatureTable (.qza files) for optional use in R
+
+qiime tools export \
+  --input-path asv-sequences.qza \
+  --output-path exported-asv-sequ
+
+qiime tools export \
+  --input-path feature-table.qza \
+  --output-path exported-asv-frequ
+
+
+
+
+
