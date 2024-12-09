@@ -24,6 +24,9 @@ Terms ("feature" = ASV = amplicon sequence variant = OTU = operational taxonomic
 (4)
 Incorporate metadata (sites, treatments) and generate preliminary visualizations. 
 
+(5) 
+Create initial diversity metrics (alpha rarefaction and phylogenetic tree) and export FeatureTable & tree for use in R.
+
 (5)
 Assign taxonomy to ASVs. 
 References my dataset to UNITE database with machine learning. 
