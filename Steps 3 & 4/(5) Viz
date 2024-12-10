@@ -1,0 +1,46 @@
+#### (5) initial diversity metrics & export files for processing in R  ####
+
+#1 generate a tree for diversity measure
+    
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences asv-sequences.qza \
+  --o-alignment aligned-asv-seqs.qza \
+  --o-masked-alignment masked-aligned-asv-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
+
+#2 export rooted-tree.qza for use in R
+
+qiime tools export \
+  --input-path rooted_tree.qza \
+  --output-path exported-tree
+
+#3 generate an alpha rerefaction plot 
+    # upload the .qzv file to qiime view
+              
+qiime diversity alpha-rarefaction \
+  --i-table feature-table.qza \
+  --i-phylogeny rooted-tree.qza \
+  --p-max-depth 108130 \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization alpha-rarefaction.qzv
+
+#4 use QIIME to generate diversity core metrics
+    # I used this to get an initial overview of the diversity data, but after I created separate metrics in R for stats
+  	
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table feature-table.qza \
+  --p-sampling-depth 104118 \
+  --m-metadata-file sample-metadata.tsv \
+  --output-dir core-metrics-results
+
+#5 export FeatureTables (.qza files) for optional use in R
+
+qiime tools export \
+  --input-path asv-sequences.qza \
+  --output-path exported-asv-sequ
+
+qiime tools export \
+  --input-path feature-table.qza \
+  --output-path exported-asv-frequ
