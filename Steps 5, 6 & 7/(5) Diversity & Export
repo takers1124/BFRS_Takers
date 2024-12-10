@@ -1,4 +1,4 @@
-#### (5) initial diversity metrics & export files for processing in R  ####
+#### (5) diversity metrics & export files for processing in R  ####
 
 #1 generate a tree for diversity measure
     
@@ -44,3 +44,23 @@ qiime tools export \
 qiime tools export \
   --input-path feature-table.qza \
   --output-path exported-asv-frequ
+
+#6 use QIIME to run ANCOM-BC analysis (differential abundance)
+    # this step came much later in my workflow (after doing most of the diversity stats & visualization in R)
+        # but ANCOM-BC was easier to run in Python with QIIME than in R
+
+    # with a specified reference-level, which is the intercept
+        # in my case, reference is the "control" "treatment", both are described in metadata file
+	
+qiime composition ancombc \
+    --i-table feature-table.qza \
+    --m-metadata-file sample-metadata.tsv \
+    --p-formula treatment \
+    --p-reference-levels treatment::control \
+    --o-differentials ancomBC-2.qza
+    
+    # create visual
+    
+qiime composition da-barplot \
+    --i-data ancomBC-2.qza \
+    --o-visualization ancomBC-2.qzv
