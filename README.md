@@ -27,23 +27,23 @@ Incorporate metadata (sites, treatments) and generate preliminary visualizations
 (5) 
 Create initial diversity metrics (alpha rarefaction and phylogenetic tree) and export FeatureTable & tree for use in R.
 
-(5)
+(6)
 Assign taxonomy to ASVs. 
 References my dataset to UNITE database with machine learning. 
 I had to connect to a remote server (AWS) to do this. I might just send you the finished csv file and bypass this step. 
 
-(6)
+(7)
 Assign functional groups. 
 References my taxonomic groups to FunGuild database. 
 
 Part 2 - statistical analysis with R 
 
-(1) 
+(8) 
 Export feature table and taxonomy table (with functional groups) as CSV files and import into R.
 
-(2) 
+(9) 
 Install required packages
 
-(3)
+(10)
 
 
