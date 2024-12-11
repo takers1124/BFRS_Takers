@@ -10,7 +10,7 @@ I used version 2023.7 for initial analysis.
 (2)
 Import raw DNA sequences (which I will send in a zip file via email). 
 These sequences had primer & barcodes removed (by Novogene).
-Many ways to upload, we will use a manifest file (included in zip file). 
+Many ways to upload, I used a manifest file (included in zip file). 
 
 (3) 
 View sequence QC, denoise with Dada2, construct feature tables.
@@ -25,16 +25,16 @@ Terms ("feature" = ASV = amplicon sequence variant = OTU = operational taxonomic
 Incorporate metadata (sites, treatments) and generate preliminary visualizations. 
 
 (5) 
-Create initial diversity metrics (alpha rarefaction and phylogenetic tree) and export FeatureTable & tree for use in R.
+Create initial diversity metrics (alpha rarefaction and phylogenetic tree), export FeatureTable & tree for use in R, and run ANCOM-BC analysis.
 
 (6)
 Assign taxonomy to ASVs. 
-References my dataset to UNITE database with machine learning. 
-I had to connect to a remote server (AWS) to do this. I might just send you the finished csv file and bypass this step. 
+References sequence data to UNITE database with machine learning. 
+I had to connect to a remote server (AWS) to do this.  
 
 (7)
 Assign functional groups. 
-References my taxonomic groups to FunGuild database. 
+References taxonomic groups (assigned with UNITE) to FunGuild database. 
 
 Part 2 - statistical analysis with R 
 
