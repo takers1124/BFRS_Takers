@@ -55,5 +55,8 @@ qiime metadata tabulate \
 
  python Guilds_v1.1.py -otu combined-tax-frequ.txt -db fungi -m -u
 
+	# exported file name (combined-tax-frequ.guilds.txt)
+		# I opened this in Excel and saved as .csv for use in R
+
     
     
