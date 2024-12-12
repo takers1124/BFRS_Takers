@@ -39,6 +39,9 @@ References taxonomic groups (assigned with UNITE) to FunGuild database.
 Part 2 - statistical analysis with R 
 
 (8) 
+All R code is in file: BFRS_full.R
+
+General steps:
 Import ASV frequency table and taxonomy table (with functional groups) as CSV files into R.
 Install required packages.
 Rarefy ASV frequency table. 
