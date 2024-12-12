@@ -39,11 +39,11 @@ References taxonomic groups (assigned with UNITE) to FunGuild database.
 Part 2 - statistical analysis with R 
 
 (8) 
-Export feature table and taxonomy table (with functional groups) as CSV files and import into R.
-
-(9) 
-Install required packages
-
-(10)
+Import ASV frequency table and taxonomy table (with functional groups) as CSV files into R.
+Install required packages.
+Rarefy ASV frequency table. 
+Run calculate alpha & beta diversity metrics.
+Run stats.
+Make graphs. 
 
 
