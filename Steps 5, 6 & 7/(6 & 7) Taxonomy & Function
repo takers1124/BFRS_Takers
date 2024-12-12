@@ -1,0 +1,59 @@
+#### (6) assign taxonomy to ASVs  ####
+
+#1 Using UNITE database to assign fungal taxonomy to ASVs
+    # Note, UNITE is for ITS loci only
+    # I used a pre-trained UNITE database, found on QIIME forum
+        # https://forum.qiime2.org/t/pre-trained-unite-its-classifiers-for-qiime-2024-5-and-older/24140
+		# Didn't work the first time, but after adding "--p-n-jobs -1" - it worked!
+        # This allocated computing power differently
+        # I still had to use a remote server (AWS) because my computer did not have enough compute power to run this
+    # I created a new directory (and was in it) with the to input files below
+
+qiime feature-classifier classify-sklearn --p-n-jobs -1 \
+  --i-classifier unite_ver9_dynamic_25.07.2023-Q2-2023.9.qza \
+  --i-reads asv-sequences.qza \
+  --o-classification taxonomy.qza
+
+#2 viz results
+   
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+
+
+
+#### (7) assign functinoal information to taxa ####
+
+# Using FunGuild, but need to format data first.
+      # https://github.com/UMNFuN/FUNGuild
+          # See ex data file and match format.
+      
+#1 download Guilds_v1.1.py file (whatever version is available)
+
+#2 transpose FeatureTable[Frequency] (file name: feature-table.qza) in Excel
+      # Convert .qza to .qzv, view feature-table.qzv, export as .csv, open in Excel
+      # Needed ASVs as rows & column headers as samples
+          # Tried in QIIME but had errors
+      # saved file (feature-table-transposed.txt)
+
+#3 merge transposed FeatureTable[Frequency] & taxonomy table (taxonomy.qza)
+      # I had an issue because the default column heading for ASV code names in taxonomy.qza did not match the column heading in my frequency table
+          # I converted taxonomy.qza to .qzv, view taxonomy.qzv, export as .csv, open in Ecel, change heading
+              # and saved new modified file (metadata_tax.tsv)
+
+qiime metadata tabulate \
+ --m-input-file feature-table-transposed.txt \
+ --m-input-file metadata_tax.tsv \
+ --o-visualization combined-taxonomy-frequ.qzv
+
+ #4 View .qzv, export as .csv and convert to .txt
+
+ #5 run FunGuild code
+       # be in a directory with the 2 files below
+       # be sure the Guild file version in code is same version as downloaded file
+       # I added -m & -u for more info
+
+ python Guilds_v1.1.py -otu combined-tax-frequ.txt -db fungi -m -u
+
+    
+    
